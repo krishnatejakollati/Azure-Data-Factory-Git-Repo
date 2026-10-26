@@ -1,0 +1,30 @@
+{
+	"name": "PL_SOURCE_TO_SILVER_INNER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start Time",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "start time",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"start time": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
