@@ -42,7 +42,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT * FROM ctrl.table_config where table_id = @{activity('PL_SOURCE_SILVER_MAIN').output.table_id}",
+							"value": "SELECT * FROM ctrl.table_config where table_id = @{activity('PL_SOURCE_SILVER_MAIN').output.pipelineReturnValue.table_id}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
