@@ -51,20 +51,7 @@
 			{
 				"name": "Ingest Source to landing",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Start Time",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "LKP_ingest_source_data",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
