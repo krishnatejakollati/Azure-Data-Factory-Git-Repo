@@ -85,7 +85,11 @@
 					"sink": {
 						"type": "ParquetSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": {
+								"value": "@concat(\n    activity('LKP_ingest_source_data').output.firstRow.source_system,\n    '/',\n    activity('LKP_ingest_source_data').output.firstRow.source_table_name,\n    '/',\n    variables('start time')\n)",
+								"type": "Expression"
+							}
 						},
 						"formatSettings": {
 							"type": "ParquetWriteSettings"
@@ -109,7 +113,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_parquet",
+						"referenceName": "DS_Parquet",
 						"type": "DatasetReference"
 					}
 				]
