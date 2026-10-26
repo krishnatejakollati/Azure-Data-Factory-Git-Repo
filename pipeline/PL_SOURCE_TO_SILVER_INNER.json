@@ -46,7 +46,8 @@
 					"dataset": {
 						"referenceName": "Lookup_Table_List",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
