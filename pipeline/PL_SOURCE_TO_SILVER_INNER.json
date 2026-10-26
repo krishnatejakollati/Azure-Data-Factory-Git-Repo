@@ -110,7 +110,13 @@
 				"outputs": [
 					{
 						"referenceName": "DS_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@concat(activity('LKP_ingest_source_data').output.firstRow.source_system,\n'/',\nactivity('LKP_ingest_source_data').output.firstRow.source_table_name,\n'/',\nvariables('start time')\n)",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
