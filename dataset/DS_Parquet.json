@@ -1,0 +1,14 @@
+{
+	"name": "DS_Parquet",
+	"properties": {
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

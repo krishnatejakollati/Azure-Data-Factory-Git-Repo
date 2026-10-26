@@ -82,38 +82,11 @@
 						},
 						"queryTimeout": "02:00:00"
 					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": {
-								"value": "@concat(\n    activity('LKP_ingest_source_data').output.firstRow.source_system,\n    '/',\n    activity('LKP_ingest_source_data').output.firstRow.source_table_name,\n    '/',\n    variables('start time')\n)",
-								"type": "Expression"
-							}
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_Postgres",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_Parquet",
 						"type": "DatasetReference"
 					}
 				]
