@@ -310,17 +310,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "pipelineReturnValue",
-								"value": [
-									{
-										"key": "watermark_value",
-										"value": {
-											"type": "String",
-											"content": ""
-										}
-									}
-								],
-								"setSystemVariable": true
+								"variableName": "watermark_value",
+								"value": {
+									"value": "@activity('Read Watermark').output.firstRow.watermark_value",
+									"type": "Expression"
+								}
 							}
 						}
 					]
