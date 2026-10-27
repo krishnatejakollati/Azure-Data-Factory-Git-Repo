@@ -48,10 +48,13 @@
 						"value": "@activity('READ SOURCE TABLES').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Source to Silver",
 							"type": "ExecutePipeline",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Failed",
 							"dependsOn": [
 								{
 									"activity": "Insert In Progress Status",
@@ -110,6 +113,8 @@
 						{
 							"name": "Update Failed Status",
 							"type": "Script",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Source to Silver",
@@ -154,7 +159,7 @@
 			},
 			"adf_run_id": {
 				"type": "String",
-				"defaultValue": "a2"
+				"defaultValue": "a3"
 			}
 		},
 		"variables": {
