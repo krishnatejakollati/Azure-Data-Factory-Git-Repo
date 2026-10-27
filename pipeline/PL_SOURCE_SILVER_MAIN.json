@@ -52,7 +52,14 @@
 						{
 							"name": "Source to Silver",
 							"type": "ExecutePipeline",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Insert In Progress Status",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"secureInput": false
 							},
@@ -92,7 +99,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "insert into ctrl.audit_log (adf_run_id, table_id, stage,start_time,status,'IN_PROGRESS') values ('a1',@{item().item_id},'SOURC_TO_SILVER', SYSUTCDATETIME)",
+											"value": "insert into ctrl.audit_log (adf_run_id, table_id, stage,start_time,status,'IN_PROGRESS') values ('@{pipeline().parameters.adf_run_id}',@{item().item_id},'SOURC_TO_SILVER', SYSUTCDATETIME)\n",
 											"type": "Expression"
 										}
 									}
@@ -103,7 +110,14 @@
 						{
 							"name": "Update Failed Status",
 							"type": "Script",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Source to Silver",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 2,
@@ -121,7 +135,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "insert into ctrl.audit_log (adf_run_id, table_id, stage,start_time,status,'IN_PROGRESS') values ('a1',@{item().item_id},'SOURC_TO_SILVER', SYSUTCDATETIME)",
+											"value": "update ctrl.audit_log set status='FAILED', end_time = SYSUTCDATETIME where adf_run_id = @{pipeline().parameters.adf_run_id} and table_id = @{item().table_id}",
 											"type": "Expression"
 										}
 									}
