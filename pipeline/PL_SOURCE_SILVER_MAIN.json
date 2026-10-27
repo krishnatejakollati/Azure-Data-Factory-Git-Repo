@@ -34,8 +34,6 @@
 			{
 				"name": "ForEach",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "READ SOURCE TABLES",
@@ -144,6 +142,28 @@
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Source to Silver_copy1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_SOURCE_TO_SILVER_INNER",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"table_id": {
+										"value": "@item().table_id",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
