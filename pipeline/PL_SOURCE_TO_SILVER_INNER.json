@@ -289,7 +289,8 @@
 								"dataset": {
 									"referenceName": "Lookup_Table_List",
 									"type": "DatasetReference"
-								}
+								},
+								"firstRowOnly": true
 							}
 						},
 						{
@@ -311,7 +312,7 @@
 							"typeProperties": {
 								"variableName": "watermark_value",
 								"value": {
-									"value": "@activity('Read Watermark').output.firstRow.watermark_column",
+									"value": "@activity('Read Watermark').output.firstRow",
 									"type": "Expression"
 								}
 							}
