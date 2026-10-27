@@ -245,13 +245,13 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Read Table Details",
+						"activity": "Start Time",
 						"dependencyConditions": [
-							"Skipped"
+							"Succeeded"
 						]
 					},
 					{
-						"activity": "Start Time",
+						"activity": "Read Table Details",
 						"dependencyConditions": [
 							"Succeeded"
 						]
