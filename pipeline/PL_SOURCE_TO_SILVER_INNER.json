@@ -110,7 +110,10 @@
 								"value": "landing",
 								"type": "Expression"
 							},
-							"folder": "@concat(activity('LKP_ingest_source_data').output.firstRow.source_system, '/', activity('LKP_ingest_source_data').output.firstRow.source_table_name, '/', variables('start time') )"
+							"folder": {
+								"value": "@concat(activity('Read Table Details').output.firstRow.source_system, '/', activity('Read Table Details').output.firstRow.source_table_name, '/', variables('start time') )\n",
+								"type": "Expression"
+							}
 						}
 					}
 				]
